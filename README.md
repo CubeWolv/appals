@@ -1,0 +1,2 @@
+# appals
+django blog application
