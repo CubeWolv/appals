@@ -8,9 +8,10 @@ from django.contrib.auth.models import User
 class LoginForm(AuthenticationForm):
     pass
 
-class SignupForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-    
+class SignupForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(required=True, error_messages={'required': 'Please enter your email address'})
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ['username', 'password', 'email']

@@ -12,7 +12,14 @@
             d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
     </svg></a>
 <div class="content-container">
-    <a href="{% url 'editpost' post.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    <!--....................the pencil edit........................-->
+    {% if request.user.is_authenticated %}
+    {% if request.user == user %}
+    <a href="{% url 'editpost' post.id %}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    {% endif %}
+    {% endif %}
+
+
     <p class="the-tag-on-top">{{post.tag}}</p>
     <h2 id="theTitle">{{post.title}}</h2>
     <p>{{post.author}} <g class="the-date">/{{post.created_on}}</g>
@@ -21,7 +28,16 @@
     <p>{{post.content|safe}}</p>
 </div>
 <hr>
-<!--....................related posts......................-->
+
+
+<div class="container-for-the-related-posts">
+    {% for related_product in related_products %}
+        <li><a href="#">{{ related_product.name }}</a></li>
+    {% empty %}
+        <li>No related products found.</li>
+    {% endfor %}
+</div>
+<!--....................related posts......................
 <div class="container-for-the-related-posts">
     <p class="more-from-appals">More from Appals</p>
     <div class="the-related-posts">
@@ -38,42 +54,43 @@
         {% endfor %}
     </div>
 
+--->
 
 
 
 
+    <!--       commenting section       -->
+    <div class="the-commenting-section">
+        <script id="dsq-count-scr" src="//appals.disqus.com/count.js" async></script>
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            /*
+            var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            */
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://appals.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                Disqus.</a></noscript>
+    </div>
+    <style>
+        .the-commenting-section {
+            width: 60%;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+    </style>
 
-<!--       commenting section       -->
-<div class="the-commenting-section">
-<script id="dsq-count-scr" src="//appals.disqus.com/count.js" async></script>
-<div id="disqus_thread"></div>
-<script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://appals.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-<style>
-    .the-commenting-section{
-        width:60%;
-        margin-top:100px;
-        margin-bottom:100px;
-    }
-</style>
 
 
-
-{% endblock %}
+    {% endblock %}

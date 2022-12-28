@@ -27,7 +27,7 @@ img {
   margin-top: 30px;
   padding: 0px;
   margin-left: 15px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: grey;
 }
@@ -42,12 +42,13 @@ img {
   
 }
 .themainimage{
-    margin-top: 0px;
+  margin-top: 0px;
+  height: 70px;
 }
 
 .secondImage {
-  height: 70px;
-  margin-top:5px
+height: 70px;
+margin-top:2px
 }
 
 .navigationBoxlink i {
@@ -221,6 +222,8 @@ footer {
   position: relative;
   border-top: 2px solid rgba(128, 128, 128, 0.795);
   clear: both;
+  z-index:11;
+  background-color: white;
 }
 
 .theFooterTopDiv {
@@ -283,4 +286,5 @@ footer {
   .the-first-class-of-links a {
     margin-left: 20px
   }
+  
 }

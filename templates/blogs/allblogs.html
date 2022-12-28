@@ -25,6 +25,11 @@
     <a href="/blogs/?q=media">Media & Entertainment</a>
     <a href="/blogs/?q=market anlysis">Market Analysis</a>
 </div>
+<style>
+    .the-container-for-navigation{
+        z-index:5;
+    }
+</style>
 {% if posts %}
 
 <!--the number of posts-->
@@ -40,7 +45,13 @@
     <!--blog div-->
     
         <div class="The-divs">
+            <!--....................the pencil edit........................-->
+            {% if request.user.is_authenticated %}
+            {% if request.user == user %}
             <a href="{% url 'editpost' post.id %}"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            {% endif %}
+            {% endif %}
+
             <div class="theContent-inside-the-divs">
                 <a href="{% url 'index' post.id post.title %}" class="PostLINK">
                 <div class="theTitleContainer">
