@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField 
-from taggit.managers import TaggableManager
 
 STATUS = (
     (0,"Draft"),
@@ -10,11 +9,9 @@ STATUS = (
 
 class Post(models.Model):
     title = models.CharField(max_length=200, blank=True)
-    slug = models.SlugField(max_length=200, blank=True)
-    tags =  TaggableManager()
+    slug = models.CharField(max_length=200, blank=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
-    postimage = models.ImageField(
-        upload_to='files/', default='/logo.png', null=True, blank=True)
+    postimage =  models.ImageField(upload_to='files/', default='/logo.png', null=True, blank=False)
     updated_on = models.DateTimeField(auto_now= True)
     content =   HTMLField()
     created_on = models.DateTimeField(auto_now_add=True)

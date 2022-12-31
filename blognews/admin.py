@@ -5,7 +5,7 @@ from .models import Post
 
 @admin.register(Post)
 class CampaignAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug' ,'tags','status', 'created_on')
+    list_display = ('title', 'slug' ,'status', 'created_on')
     search_fields = ('status', 'title', 'slug')
 
     def approve_comments(self, request, queryset):

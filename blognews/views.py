@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
 from .models import Post
 from django.utils.text import slugify
-from django.http import Http404
+from .forms import AddPostForm
 from django.db.models import  Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import user_passes_test
@@ -54,49 +54,39 @@ def search(request):
 def user_is_specific_user(user):
     return user.username == 'imran'
 
+
 @user_passes_test(user_is_specific_user)
 def addpost(request):
-    campID = 1
     if request.method == 'POST':
-        # create a new Post instance with the provided data
-        post = Post.objects.create(
-            author=request.user,
-            title=request.POST['title'],
-            slug=request.POST['slug'],
-            postimage =request.FILES['postimage'],
-            content=request.POST['content'],
-        )
-        # get the tags string, split it into a list, and convert each tag to a slug
-        tags = request.POST.get('tags').split(',')
-        tags = [slugify(tag) for tag in tags]
-        # set the tags field using the set method of the TaggableManager
-        post.tags.set(tags)
-        campID = post.id
-        # save the Post instance to the database
-        post.save()
-        post
-       
-        return redirect('blognews')
-    return render(request, './addpost/addpost.html')
+        # Bind the form to the request POST data
+        form = AddPostForm(request.POST, request.FILES)
+
+        # Check if the form is valid
+        if form.is_valid():
+          
+            post = form.save(user=request.user)
+            # Redirect to the post detail page
+            return redirect('blognews')
+    else:
+        # Create an instance of the form
+        form = AddPostForm()
+    # Render the form template
+    return render(request, './addpost/addpost.html', {'form': form})
+
+
+
+
+
 
 login_required
 @user_passes_test(user_is_specific_user)
 def editpost(request, id):
-    # retrieve the object to be edited
-    post = get_object_or_404(Post, id=id)
-
+    post = Post.objects.get(id=id)
     if request.method == 'POST':
-        # handle the POST request by updating the object
-        post.title=request.POST['title'],
-        post.slug=request.POST['slug'],
-        post.postimage=request.FILES['postimage']
-        post.content=request.POST['content'],
-        post.tags=request.POST['tags']
-
-        # and so on for each field in the form
-        post.save()
-        return redirect('blognews')
+        form = AddPostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('blognews')
     else:
-        # render the template with the object's data
-        return render(request, './addpost/editpost.html',{'post':post})
-
+        form = AddPostForm(instance=post)
+    return render(request, './addpost/addpost.html', {'form': form})
