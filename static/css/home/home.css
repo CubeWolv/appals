@@ -1,0 +1,156 @@
+            /*commenting section*/
+            .the-commenting-section {
+                width: 60%;
+                margin-top: 100px;
+                margin-bottom: 100px;
+                margin-left: 100px;
+            }
+    
+            /*up up and away arrow*/
+            .up-up-and-away-arrow {
+                position: fixed;
+                bottom: 100px; 
+                right: 100px;
+                width: 40px;
+                height: 40px;
+                color: rgb(47, 255, 47);
+                cursor: pointer;
+                z-index: 10;
+            }
+    
+            /*............................the blog content.......................*/
+            .content-container {
+                width: 55%;
+                font-size: 16px;
+                margin-left: 150px;
+                margin-top: 50px;
+                font-family: "Montserrat",sans-serif;
+            }
+    
+            .content-container h2 {
+                font-weight: bolder;
+                color: black;
+            }
+    
+            .the-tag-on-top {
+                color: rgb(0, 255, 136);
+                ;
+            }
+    
+            .the-date {
+                font-size: 12px;
+                font-family: "poppins", sans-serif;
+                color: grey;
+            }
+    
+            .content-container img {
+                height: 10%;
+                width: 100%;
+            }
+            .the-safe-content-all{
+                margin-top:100px;
+            }
+    
+            #theTitle{
+                font-size:35px;
+            }
+            li{
+                list-style: none;
+            }
+    
+            /*---------------------------------responsive blog---------------------------*/
+    
+            @media(max-width:500px) {
+                .content-container {
+                    width: 90%;
+                    font-size: 16px;
+                    margin-left: 0px;
+                    margin-top: 50px;
+                    margin: 5%;
+                    line-height: 30px;
+                }
+    
+                .the-commenting-section {
+                    width: 95%;
+                    margin-top: 100px;
+                    margin-bottom: 100px;
+                    margin-left: 2%;
+                }
+    
+                .up-up-and-away-arrow {
+                    bottom: 100px;
+                    right: 10px;
+                    width: 25px;
+                    height: 25px;
+                }
+                #theTitle{
+                text-align: center;
+            }
+            }
+    
+            /*............................Related posts.......................*/
+            .container-for-the-related-posts {
+                margin-left: 150px
+            }
+    
+            .container-for-the-related-posts .more-from-appals {
+                color: rgb(0, 192, 0);
+                font-size: 15.5px;
+                font-weight: bolder;
+            }
+    
+            .the-related-posts {
+                margin-left: 10px;
+                width: 50%;
+            }
+    
+    
+            .container-inside-the-related-posts {
+                transition: box-shadow .3s;
+                border-bottom: 1px solid silver;
+                margin-top: 10px;
+                display: flex;
+                padding: 5px;
+            }
+    
+            .container-inside-the-related-posts:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            }
+    
+            .the-related-posts a:hover {
+                text-decoration: none;
+                color: black;
+            }
+    
+    
+            .related-posts-title {
+                margin-left: 10px;
+                margin-top: 10px;
+                color: rgb(0, 192, 0);
+                font-weight: bold;
+            }
+    
+            .the-related-posts img {
+                width: 100px;
+                height: 65px;
+            }
+    
+    
+            /*--------------------------------responsive related posts-----------------*/
+            @media(max-width:580px) {
+                .the-related-posts {
+                    margin-left: 00px;
+                    width: 80%;
+                }
+            }
+    
+            @media(max-width:500px) {
+                .container-for-the-related-posts {
+                    margin-left: 30px
+                }
+    
+                .the-related-posts {
+                    width: 90%;
+                }
+    
+            }

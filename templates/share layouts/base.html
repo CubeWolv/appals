@@ -52,6 +52,11 @@
 
 <body>
     <div class="navigationBox">
+
+        <!--{% if user.is_authenticated %}
+        {{request.user}}
+        {% endif %}-->
+
         <a href="{% url 'blognews' %}" class="theimageLogos">
             <img src="{% static 'images/logo.png' %}" class="themainimage" />
             <img src="{% static 'images/logoword.png' %}" class="secondImage" />
@@ -70,10 +75,6 @@
                 <input type="search" placeholder="|" id="theSearchboxVNAv" name="q">
                 <input type="submit" value='&#x1F50E;&#xFE0E;' class="the-search-icon">
             </form>
-            <style>
-
-            </style>
-
 
             <!--------------------------------------------Menu bar-------------------------------------->
             <div id="mySidenav" class="sidenav">
@@ -108,8 +109,7 @@
             <div class="theFooterLogo">
                 <img src="{% static 'images/logoword.png' %}">
                 <div class="the-word-at-thefooter">
-                    <p>Austere | What do we do here at austere .We provide information , updates ,insights on how to go
-                        with your life and points you need to add on to your list
+                    <p>Welcome to our blog, Appals! Here, we provide updates on the latest tech trends and insights on what we do. Stay up to date with us to stay ahead in the tech world.
                     </p>
                 </div>
             </div>
@@ -155,8 +155,6 @@
 </script>
 
 <noscript>Cookie Consent by <a href="https://popupsmart.com/" rel="nofollow noopener">Popupsmart Website</a></noscript> 
-
-
 
 
 

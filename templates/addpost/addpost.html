@@ -9,45 +9,22 @@
     <meta name="author" content="Imran Abdu">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
     <meta http-equiv="refresh" content="216000">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.1/dist/js/select2.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/bk7sr0bb5ia1ri4yu2hd05sdqxqces0w22w3ciqwnoc60ep8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
   </head>
   <body>
   
-    <form action="{% url 'addpost' %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-    <input type="text" placeholder="Title" name="title"><br>
-    <input type="text" placeholder="Slag" name="slug"><br>
-    <input type="file" name="postimage" accept="image/*">
-    <input type="text" placeholder="Tags" name="tags"><br>
-    <textarea name="content">
-       Welcome to TinyMCE!
-    </textarea>
-    <!--......................submit button........................-->
-    <input type="submit" value="POST POST THE BLOG" class="thesubmitbutton">
-    <style>
-.thesubmitbutton{
-  width:200px;
-  padding:20px;
-  border:1px solid transparent;
-  border-radius: 5px;
-  background-color: lime;
-}
-.thesubmitbutton:hover{
-  width:200px;
-  padding:20px;
-  border:1px solid transparent;
-  border-radius: 5px;
-  background-color: lime;
-}
-input{
-  margin-top:20px;
-  width:80%;
-  border-radius: 5px;
-  border:1px solid silver;
-  padding:10px;
-}
-    </style>
+      <form method="post"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="thesubmitbutton">Submit</button>
+  
   </form>
+
+  <script>
+    $('#id_tags').select2();
+  </script>
   
   <script>
       tinymce.init({

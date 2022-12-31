@@ -1,0 +1,206 @@
+.about-us-section {
+    position: relative;
+}
+
+.about-us-section img {
+    width: 100%;
+    height: auto;
+    background-image: url('image.jpg');
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-family: "poppins", sans-serif;
+}
+
+
+.text-overlay h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.text-overlay p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/*`````````````````````````````````big green headings```````````````````*/
+.the-big-green-Headings {
+    color: green;
+    font-size: 30px;
+    font-family: "poppins", sans-serif;
+    margin-left: 150px;
+    font-weight: bold;
+    border-bottom: 3px solid green;
+    width: 20%;
+    margin-top: 60px;
+}
+
+
+/*..........................the core values css........................*/
+.the-core-values {
+    display: flex;
+    width: 80%;
+    margin-left: 13%;
+}
+
+.theCoreValue {
+    width: 26.6%;
+    margin: 20px;
+    font-family: "poppins", sans-serif;
+}
+
+.theCoreValue img {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.theCoreValue p {
+    text-align: center;
+}
+
+.the-green-core-values {
+    font-weight: bold;
+    color: green;
+    margin-top: 20px;
+}
+
+
+
+/*===================================author of the blog============================*/
+.author-of-the-blog-container {
+    font-family: "poppins", sans-serif;
+    margin-top: 30px;
+}
+
+.author-of-the-blog-container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.author-of-the-blog-container p {
+    margin-top: 15px;
+}
+
+.authors-intro {
+    width: 40%;
+    border-top: 3px solid green;
+}
+
+/*            the responsive page              */
+@media (min-width: 480px) {
+    .text-overlay {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .text-overlay {
+        width: 60%;
+    }
+}
+
+@media (min-width: 992px) {
+    .text-overlay {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .text-overlay {
+        width: 30%;
+    }
+}
+
+
+/*the core values*/
+@media (min-width: 610px) {
+
+    /*upper picture*/
+    .text-overlay h2 {
+        font-size: 30px;
+    }
+
+    .text-overlay p {
+        font-size: 15px;
+    }
+
+    /*core values*/
+    .the-core-values {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .theCoreValue {
+        width: 30%;
+        margin: 20px;
+        font-family: "poppins", sans-serif;
+    }
+
+    .theCoreValue img {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+}
+
+
+@media (max-width: 520px) {
+    .text-overlay {
+        width: 80%;
+    }
+
+    .text-overlay h2 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .text-overlay p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /*core values*/
+    .the-core-values {
+        width: 90%;
+        margin-left: 5%;
+        display: block;
+    }
+
+    .theCoreValue {
+        width: 90%;
+        margin: 20px;
+        font-family: "poppins", sans-serif;
+    }
+
+    .theCoreValue img {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+
+    /*      the author            */
+    .authors-intro {
+        width: 60%;
+    }
+
+}
+
+@media (max-width: 610px) {
+    .the-big-green-Headings {
+        font-size: 35px;
+        margin-left: 100px;
+        width: 60%;
+        border-bottom: 1px solid silver;
+    }
+}

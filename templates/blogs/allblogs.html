@@ -7,7 +7,11 @@
 {% endblock header %}
  
 {% block content %}
-
+{% if request.user.is_authenticated %}
+            {% if request.user == user %}
+            <body style="background-color:rgb(231, 231, 231);">
+            {% endif %}
+            {% endif %}
 
 <!------------------------------------The navigation vertical-------------------------->
 <div class="the-container-for-navigation">
