@@ -1,0 +1,480 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    {% block header %}{% endblock %}
+    <meta name="description" content="blog">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF">
+    <meta name="author" content="Imran Abdu">
+    <link rel='icon' href="{% static 'images/logowhite.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+    <link rel="stylesheet" href='{% static "css/base/base.css" %}' />
+    <script type="module" src="https://cookieconsent.popupsmart.com/js/CookieConsent.js" ></script>
+    <script type="text/javascript" src="https://cookieconsent.popupsmart.com/js/App.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+    <!--......................................The Drift messaging code..............................................-->
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
+
+        !function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('bzpcp4kambt4');
+    </script>
+    <!-- End of Async Drift Code -->
+
+</head>
+
+<body>
+    <div class="navigationBox">
+
+        <!--{% if user.is_authenticated %}
+        {{request.user}}
+        {% endif %}-->
+
+        <a href="{% url 'blognews' %}" class="theimageLogos">
+            <img src="{% static 'images/logo.png' %}" class="themainimage" />
+            <img src="{% static 'images/logoword.png' %}" class="secondImage" />
+        </a>
+
+        <div class="navigationBoxlink">
+            <a href="{% url 'blognews' %}">Blogs</a>
+            <a href="/blogs/?q=apps">Apps</a>
+            <a href="/blogs/?q=gadgets">Gadgets</a>
+            <a href="/blogs/?q=events">Events</a>
+            <a href="/blogs/?q=business">Business</a>
+
+
+
+            <form method="get" action="{% url 'search' %}" class="the-search-bar-onn-the-nav">
+                <input type="search" placeholder="|" id="theSearchboxVNAv" name="q">
+                <input type="submit" value='&#x1F50E;&#xFE0E;' class="the-search-icon">
+            </form>
+
+            <!--------------------------------------------Menu bar-------------------------------------->
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <form method="get" action="{% url 'search' %}" class="the-form-for-the-search-1">
+                    <input type="search" placeholder="Search for any blog" id="theSearchboxVNAv" name="q">
+                    <input type="submit" value='&#x1F50E;&#xFE0E;' class="the-search-icon">
+                </form>
+                <a href="{% url 'blognews' %}">Blogs</a>
+                <a href="/blogs/?q=apps">Apps</a>
+                <a href="/blogs/?q=gadgets">Gadgets</a>
+                <a href="/blogs/?q=events">Events</a>
+                <a href="/blogs/?q=business">Business</a>
+                <a href="/blogs/?q=crypto">Crypto</a>
+                <a href="/blogs/?q=startups">Startups</a>
+                <a href="/blogs/?q=media">Media & Entertainment</a>
+                <a href="/blogs/?q=market anlysis">Market Analysis</a>
+            </div>
+            <div class="menu">
+                <i class="fa fa-bars" onclick="openNav()"></i>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
+    <br>
+
+    <!--..................................................the footer head.....................-->
+    <footer class="theFooterContainer">
+        <div class="theFooterTopDiv">
+
+            <div class="theFooterLogo">
+                <img src="{% static 'images/logoword.png' %}">
+                <div class="the-word-at-thefooter">
+                    <p>Welcome to our blog, Appals! Here, we provide updates on the latest tech trends and insights on what we do. Stay up to date with us to stay ahead in the tech world.
+                    </p>
+                </div>
+            </div>
+
+            <!--.. Footer links ..-->
+
+            <div class="the-first-class-of-links">
+                <a href="{% url 'about' %}">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+                <a href="{% url 'privacypolicy' %}">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="in-the-void-all-rights-reserved-container">
+        <p class="in-the-void-all-rights-reserved">© 2022-23 All Rights Reserved | austere.in </p>
+        </div>
+    </footer>
+
+
+    <!--Script for the navigation bar-->
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "60%";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+
+
+<script>
+    popupsmartCookieConsentPopup({
+        "siteName" : "Appals" ,
+        "notice_banner_type": "bottom-dialog",
+        "consent_type": "e-privacy",
+        "palette": "dark",
+        "language": "English",
+        "privacy_policy_url" : "#" ,
+        "preferencesId" : "#open_preferences" ,
+        "companyLogoURL" : "https://d2r80wdbkwti6l.cloudfront.net/TNh85GK88S3V8oz1rEyVivboAsbnDlG3.jpg"
+    });
+</script>
+
+<noscript>Cookie Consent by <a href="https://popupsmart.com/" rel="nofollow noopener">Popupsmart Website</a></noscript> 
+
+
+
+
+<style>
+    body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
+img {
+  height: 80px;
+  margin-top: 10px;
+}
+
+.navigationBox {
+  margin-top: -15px;
+  padding: 0px;
+  display: flex;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 70px;
+}
+
+.navigationBoxlink a {
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 0px;
+  margin-left: 15px;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: grey;
+}
+
+.navigationBoxlink a:hover {
+  color: silver;
+  text-decoration: none;
+}
+
+.theimageLogos {
+  display: flex;
+
+}
+
+.themainimage {
+  margin-top: 0px;
+  height: 70px;
+}
+
+.secondImage {
+  height: 70px;
+  margin-top: 2px
+}
+
+.navigationBoxlink i {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.menu {
+  font-size: 30px;
+}
+
+.menu i {
+  position: relative;
+  top: -10px;
+  right: 5px;
+}
+
+.the-search-bar-onn-the-nav {
+  display: block;
+  border: 1px solid lime;
+  border-radius: 5px;
+}
+
+.navigationBox form {
+  display: inline-flex;
+  margin-left: 10px;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.navigationBox input {
+  padding: 5px;
+  border: none;
+}
+
+#theSearchboxVNAv {
+  border-right: none;
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 10px;
+  border: none;
+}
+
+#theSearchboxVNAv {
+  background-color: transparent;
+
+}
+
+.the-search-icon {
+  margin-left: -20px;
+  padding: 12px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: lime;
+}
+
+.the-search-icon:hover {
+  color: orangered
+}
+
+#theSearchboxVNAv:focus {
+  box-shadow: none !important;
+  outline-offset: 0px !important;
+  outline: none !important;
+  background-color: transparent;
+}
+
+@media(min-width:890px) {
+  .menu {
+    display: none;
+  }
+
+}
+
+@media(max-width:890px) {
+  .menu {
+    display: block;
+    float: right;
+    position: absolute;
+    right: 10px;
+    margin-top: 0px;
+  }
+
+  .navigationBox {
+    height: 62px;
+  }
+
+  .navigationBoxlink a {
+    display: none;
+  }
+
+  .the-search-bar-onn-the-nav input {
+    display: none;
+  }
+
+  .the-search-bar-onn-the-nav:focus {
+    transition: 0.5s;
+    border: 1px solid lime !important;
+    box-shadow: none !important;
+    outline-offset: 0px !important;
+    outline: none !important;
+
+  }
+
+  .theSearchBarRemove::before {
+    display: none;
+  }
+}
+
+@media(min-width:890px) {
+  #mySidenav a {
+    display: block;
+  }
+}
+
+
+
+/*..................side bar navigatoin........................*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: -15px;
+  right: 15px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px
+  }
+
+}
+
+
+/*.................................................the footer styling...........................................*/
+footer {
+  clear: both;
+}
+
+.theFooterContainer {
+  width: 100%;
+  position: relative;
+  border-top: 2px solid rgba(128, 128, 128, 0.795);
+  clear: both;
+  z-index: 11;
+  background-color: white;
+}
+
+.theFooterTopDiv {
+  height: 50vh;
+  margin-top: 50px;
+  clear: both;
+}
+
+.theFooterLogo {
+  margin-left: 20px;
+
+}
+
+.theFooterLogo img {
+  height: 100px;
+  float: left;
+}
+
+.the-word-at-thefooter {
+  width: 200px;
+  float: left;
+  margin-left: 5%;
+  margin-top: 5%;
+  border-bottom: 3px solid lime;
+  font-family: "poppins", sans-serif;
+}
+
+.the-first-class-of-links {
+  float: right;
+  margin-right: 200px;
+  margin-top: 30px;
+  display: grid
+}
+
+.the-first-class-of-links a {
+  color: grey;
+  margin-top: 15px;
+}
+
+.the-first-class-of-links a:hover {
+  text-decoration: none;
+  color: silver;
+}
+
+.in-the-void-all-rights-reserved-container{
+    clear: both;
+position: relative;
+bottom:-70px;
+
+}
+
+.in-the-void-all-rights-reserved{
+    position: absolute;
+}
+
+
+@media(max-width:670px) {
+  .the-first-class-of-links {
+    float: none;
+    clear: both;
+    margin-bottom: 590px;
+    margin-top:30px;
+  }
+
+  .the-first-class-of-links a {
+    margin-top: 15px;
+  }
+  .the-word-at-thefooter {
+  margin-left: 2%;
+}
+.theFooterLogo {
+  margin-left: 0px;
+  margin-bottom:0px;
+}
+}
+
+@media(min-width:470px) {
+  .the-first-class-of-links a {
+    margin-left: 20px;
+  }
+
+}
+</style>
