@@ -30,12 +30,12 @@ SECRET_KEY = 'django-insecure-r*y+92_kbvtd@27l8brr+0d5-zkw)%jwvg8=jd!jc&#van8bu4
 #SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['*']
 
-#DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "False"
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "False"
 
 
 # Application definition
@@ -91,12 +91,12 @@ WSGI_APPLICATION = 'appals.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'c:/sqlite/db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'c:/sqlite/db.sqlite3',
+#    }
+#}
 #DATABASES = {
 #    'default': {
 #       'ENGINE':   'django.db.backends.mysql',
@@ -107,19 +107,19 @@ DATABASES = {
 # }
 
 
-#if DEVELOPMENT_MODE is True:
-#    DATABASES = {
-#        "default": {
-#            "ENGINE": "django.db.backends.sqlite3",
-#            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#        }
-#    }
-#elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-#    if os.getenv("DATABASE_URL", None) is None:
-#        raise Exception("DATABASE_URL environment variable not defined")
-#    DATABASES = {
-#        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
-#    }
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 
 # Password validation
