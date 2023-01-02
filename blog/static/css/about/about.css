@@ -4,7 +4,7 @@
 
 .about-us-section img {
     width: 100%;
-    height: auto;
+    height:auto;
     background-image: url('image.jpg');
 }
 
@@ -155,8 +155,13 @@
 
 
 @media (max-width: 520px) {
+  .about-us-section img {
+    width: 100%;
+    height:30vh;
+}
+
     .text-overlay {
-        width: 80%;
+        width: 90%;
     }
 
     .text-overlay h2 {
